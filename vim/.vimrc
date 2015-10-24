@@ -17,6 +17,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'bling/vim-airline'
 Plugin 'scrooloose/syntastic'
+Plugin 'ryanoasis/vim-devicons' " icons
 
 " Ruby and ROR
 Plugin 'vim-ruby/vim-ruby'
@@ -146,6 +147,7 @@ let NERDTreeWinSize=50
 
 " Airline
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
 
 " configure syntastic syntax checking to check on open as well as save
 let g:syntastic_ruby_checkers = ['mri']
