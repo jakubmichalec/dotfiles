@@ -19,10 +19,18 @@ Plugin 'bling/vim-airline'
 Plugin 'scrooloose/syntastic'
 Plugin 'ryanoasis/vim-devicons' " icons
 
+" Snippets
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'ervandew/supertab'
+
+
 " Ruby and ROR
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-rails'
 Plugin 'thoughtbot/vim-rspec'
+Plugin 'nelstrom/vim-textobj-rubyblock'
+Plugin 'kana/vim-textobj-user'
 
 call vundle#end()
 filetype plugin indent on
@@ -95,6 +103,12 @@ set nobackup
 set nowritebackup
 set noswapfile
 
+" invisible chars
+set list
+set listchars=tab:▸\ ,eol:¬
+
+set ruler " show the cursor position
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -107,7 +121,11 @@ nnoremap <right> <nop>
 nnoremap j gj
 nnoremap k gk
 
-map <leader>ev :e! ~/.vimrc<cr> " edit ~/.vimrc
+" edit vimrc and load vimrc bindings
+nnoremap <leader>ev :vsp $MYVIMRC<CR>
+nnoremap <leader>sv :source $MYVIMRC<CR>
+
+nmap <leader>, :w<CR> " save
 
 nmap \q :nohlsearch<CR> " Clear the highlight search
 
@@ -127,14 +145,16 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-nmap <leader>, :w<CR> " save
-
-nmap <leader>. <c-^> " switch between current and last buffer
-
 " Buffers
 nnoremap <leader>bn :bn<CR> " Next buffer
 nnoremap <leader>bp :bp<CR> " Previous buffer
 nnoremap <leader>bq :bp <BAR> bd #<CR> " Close the current buffer and move to the previous one
+
+" TMUX conf
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
