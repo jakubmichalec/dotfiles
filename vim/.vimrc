@@ -7,6 +7,8 @@
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 
+runtime macros/matchit.vim
+
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim' " let Vundle manage Vundle, required
@@ -18,12 +20,19 @@ Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'bling/vim-airline'
 Plugin 'scrooloose/syntastic'
 Plugin 'ryanoasis/vim-devicons' " icons
-
+Plugin 'tpope/vim-unimpaired'
+Plugin 'ggreer/the_silver_searcher'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-commentary'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'christoomey/vim-tmux-runner'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'rking/ag.vim'
 " Snippets
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-Plugin 'ervandew/supertab'
-
+Plugin 'Valloric/YouCompleteMe'
 
 " Ruby and ROR
 Plugin 'vim-ruby/vim-ruby'
@@ -31,6 +40,11 @@ Plugin 'tpope/vim-rails'
 Plugin 'thoughtbot/vim-rspec'
 Plugin 'nelstrom/vim-textobj-rubyblock'
 Plugin 'kana/vim-textobj-user'
+Plugin 'tpope/vim-bundler'
+Plugin 'tpope/vim-rake'
+
+" GIT
+Plugin 'tpope/vim-fugitive'
 
 call vundle#end()
 filetype plugin indent on
@@ -68,6 +82,7 @@ set foldnestmax=10 " deepest fold is 10 levels
 set nofoldenable " don't fold by default
 set foldlevel=1
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => User Interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -75,7 +90,7 @@ set foldlevel=1
 " Searching
 set ignorecase " case insensitive searching
 set smartcase " case-sensitive if expresson contains a capital letter
-set hlsearch
+set hlsearch " highlight all matche, after enter search patter
 set incsearch " set incremental search, like modern browsers
 set nolazyredraw " don't redraw while executing macros
 
@@ -92,7 +107,12 @@ set background=dark
 colorscheme railscast
 
 
+set relativenumber
 set number
+
+autocmd InsertEnter * :set number norelativenumber
+autocmd InsertLeave * :set relativenumber
+
 set autoindent " automatically set indent of new line
 set smartindent
 
@@ -156,6 +176,11 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
+autocmd VimResized * :wincmd = " automatically rebalance windows on vim resize
+
+" zoom a vim pane, <C-w>= to re-balance
+nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
+nnoremap <leader>= :wincmd =<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins Settings and Mappings
@@ -174,33 +199,22 @@ let g:syntastic_ruby_checkers = ['mri']
 let g:syntastic_enable_highlighting=0
 
 " ctrlp conf
-let g:ctrlp_map = '<Leader>t'
 let g:ctrlp_match_window_bottom = 0
 let g:ctrlp_match_window_reversed = 0
 let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend)$|(^|[/\\])\.(hg|git|bzr)'
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_dotfiles = 0
 let g:ctrlp_switch_buffer = 0
+" let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
+let g:ctrlp_use_caching = 0
 
 " RSpec.vim mappings
 map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Functions
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Complete
+let g:UltiSnipsExpandTrigger="<c-k>"
+let g:UltiSnipsJumpForwardTrigger="<c-k>"
+let g:UltiSnipsJumpBackwardTrigger="<s-c-j"
 
-function! <SID>StripTrailingWhitespace()
-    " Preparation: save last search, and cursor position.
-    let _s=@/
-    let l = line(".")
-    let c = col(".")
-    " Do the business:
-    %s/\s\+$//e
-    " Clean up: restore previous search history, and cursor position
-    let @/=_s
-    call cursor(l, c)
-endfunction
-nmap <silent> <Leader><space> :call <SID>StripTrailingWhitespace()<CR>
+
