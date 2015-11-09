@@ -3,13 +3,13 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ln -s ~/dotfiles/vim/.vimrc ~/.vimrc
 
-set nocompatible  " Use Vim settings, rather then Vi settings
+set nocompatible                  " Use Vim settings, rather then Vi settings
 filetype off
 
 " load plugins from vundle
 set rtp+=~/.vim/bundle/Vundle.vim
 
-runtime macros/matchit.vim
+runtime macros/matchit.vim        " Enable built-in matchit plugin
 
 call vundle#begin()
 
@@ -30,13 +30,13 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'christoomey/vim-tmux-runner'
 Plugin 'bling/vim-airline'
 Plugin 'scrooloose/nerdtree'
+Plugin 'kana/vim-textobj-user'
 
 " Ruby and Rails
 Plugin 'tpope/vim-rails'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'thoughtbot/vim-rspec'
 Plugin 'nelstrom/vim-textobj-rubyblock'
-Plugin 'kana/vim-textobj-user'
 Plugin 'tpope/vim-bundler'
 Plugin 'tpope/vim-rake'
 
@@ -47,9 +47,14 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'Valloric/YouCompleteMe'
+Bundle 'ervandew/supertab'
 
 call vundle#end()
 filetype plugin indent on
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Settings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let mapleader = "\<Space>"        " leader now is a space
 
@@ -116,7 +121,7 @@ set history=1000                " Remember last 1000 commands
 set scrolloff=4                 " Keep at least 4 lines below cursor
 
 set encoding=utf8
-set t_Co=256                    " Explicitly tell vim that the terminal supports 256 colors"
+set t_Co=256                    " Explicitly tell vim that the terminal supports 256 colors
 set background=dark
 colorscheme jellybeans
 
@@ -144,7 +149,7 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 nnoremap <leader>bn :bn<CR>               " Next buffer
 nnoremap <leader>bp :bp<CR>               " Previous buffer
 nnoremap <leader>bq :bp <BAR> bd #<CR>    " Close the current buffer and move to the previous one
-nmap <leader>. <c-^> " switch between current and last buffer
+nmap <leader>. <c-^>                      " switch between current and last buffer
 
 " Splits
 nnoremap <C-J> <C-W><C-J>
@@ -158,23 +163,31 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
-autocmd VimResized * :wincmd = " automatically rebalance windows on vim resize
+autocmd VimResized * :wincmd =            " automatically rebalance windows on vim resize
 
 " zoom a vim pane, <C-w>= to re-balance
 nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
 nnoremap <leader>= :wincmd =<cr>
 
-nmap \q :nohlsearch<CR> " Clear the highlight search
+nmap \q :nohlsearch<CR>                   " Clear the highlight search
 
 " don't need shift for :
 nnoremap ; :
 vnoremap ; :
 
-nmap <leader>, :w<CR> " save
+nmap <leader>, :w<CR>                     " save
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins Settings and Mappings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Mappings
+
+nnoremap <leader>ue :UltiSnipsEdit<cr>        " Edit Snippets
+map <Leader>t :call RunCurrentSpecFile()<CR>  " RSpec.vim mappings
+map <Leader>a :call RunAllSpecs()<CR>         " RSpec.vim mappings
+map ++ :NERDTreeToggle<CR>                    " NERDtree
 
 " ctrlp conf
 let g:ctrlp_match_window_bottom = 0
@@ -189,19 +202,31 @@ let g:ctrlp_use_caching = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
-" RSpec.vim mappings
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
-
 " configure syntastic syntax checking to check on open as well as save
 let g:syntastic_ruby_checkers = ['mri']
 let g:syntastic_enable_highlighting=0
 
 " Complete
+let g:ycm_complete_in_comments = 1
+let g:ycm_complete_in_strings = 1
+let g:ycm_collect_identifiers_from_comments_and_strings = 1
+
+let g:ycm_filetype_blacklist = {}
+
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+
+let g:SuperTabDefaultCompletionType    = '<C-n>'
+let g:SuperTabCrMapping                = 0
+
 let g:UltiSnipsExpandTrigger="<c-k>"
 let g:UltiSnipsJumpForwardTrigger="<c-k>"
 let g:UltiSnipsJumpBackwardTrigger="<s-c-j"
 
+let g:UltiSnipsEditSplit='vertical'
+let g:UltiSnipsExpandTrigger           = '<tab>'
+let g:UltiSnipsJumpForwardTrigger      = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger     = '<s-tab>'
+
 " set nerdtree window size, map ++ to open NERDtree panel
-map ++ :NERDTreeToggle<CR>
 let NERDTreeWinSize=50
