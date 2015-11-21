@@ -17,9 +17,6 @@ done
 
 echo "Create bin folder and place there tat script for TMUX"
 
-if [ ! -e ~/bin ]; then 
-	mkdir ~/bin
-	cp "$DOTFILES"/bin/tat ~/bin/tat
-fi
+cp "$DOTFILES"/bin/tat /usr/local/bin/tat
 
 echo "Done"
