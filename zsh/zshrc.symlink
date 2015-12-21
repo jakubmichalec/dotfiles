@@ -5,7 +5,7 @@ DEFAULT_USER="kuba"
 
 plugins=(bower bundler rails ruby)
 
-export PATH="$HOME/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="$HOME/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/dotfiles/bin"
 
 source $ZSH/oh-my-zsh.sh
 
