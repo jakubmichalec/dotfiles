@@ -248,3 +248,5 @@ let g:rspec_command = "Dispatch rspec {spec}"
 " t-mux runner 
 let g:VtrUseVtrMaps = 1                       " normal mode maps for t-mux runner
 
+" vim-fugitive
+set diffopt+=vertical
