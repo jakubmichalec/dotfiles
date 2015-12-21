@@ -43,6 +43,7 @@ Plugin 'tpope/vim-dispatch'
 
 " GIT
 Plugin 'tpope/vim-fugitive'
+Plugin 'christoomey/vim-conflicted'
 
 " Snippets
 Plugin 'SirVer/ultisnips'
@@ -243,4 +244,7 @@ let NERDTreeWinSize=50
 
 " dispatch.vim
 let g:rspec_command = "Dispatch rspec {spec}"
+
+" t-mux runner 
+let g:VtrUseVtrMaps = 1                       " normal mode maps for t-mux runner
 

@@ -1,0 +1,28 @@
+export ZSH=$HOME/.oh-my-zsh
+
+ZSH_THEME="agnoster"
+DEFAULT_USER="kuba"
+
+plugins=(bower bundler rails ruby)
+
+export PATH="$HOME/.rbenv/shims:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+
+source $ZSH/oh-my-zsh.sh
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+export EDITOR='vim'
+
+# aliases
+alias la="ls -la"
+alias ez="vim ~/.zshrc"
+alias sz="source ~/.zshrc"
+alias tree="tree -C"
+
+for zsh_source in $HOME/dotfiles/zsh/*.zsh; do 
+  source $zsh_source
+done
+
+# t-mux session on startup
+ensure_tmux_is_running
+
