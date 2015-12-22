@@ -13,11 +13,15 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 export EDITOR='vim'
 
+function conflicted { vim +Conflicted }
+
 # aliases
 alias la="ls -la"
 alias ez="vim ~/.zshrc"
 alias sz="source ~/.zshrc"
 alias t="tree -C"
+alias dot="cd ~/dotfiles"
+
 
 for zsh_source in $HOME/dotfiles/zsh/*.zsh; do 
   source $zsh_source
