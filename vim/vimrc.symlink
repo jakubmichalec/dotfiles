@@ -184,6 +184,9 @@ vnoremap ; :
 
 nmap <leader>, :w<CR>                     " save
 
+" markdown settings
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+let g:markdown_fenced_languages = ['html', 'ruby', 'javascript']
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins Settings and Mappings
