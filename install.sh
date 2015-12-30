@@ -19,6 +19,6 @@ if [ "$(uname)" == "Darwin"  ]; then
 fi
 
 echo "Setting up symlinks"
-source instal/link.sh
+source install/link.sh
 
 echo "Dotfiles installed".

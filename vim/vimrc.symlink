@@ -188,7 +188,9 @@ nmap <leader>, :w<CR>                     " save
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 let g:markdown_fenced_languages = ['html', 'ruby', 'javascript']
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <Leader>km :e ~/dotfiles/key.md<cr>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins Settings and Mappings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
