@@ -1,50 +1,50 @@
-## Vim
+# Vim
 
-# Files
+### Files
 leader - space  
 jk - exit insert mode  
-<leader> , - save file  
-<leader> km - open this file  
+leader , - save file  
+leader km - open this file  
 
-# Buffers
+### Buffers
 
-<leader> ev - edit vimrc  
-<leader> sv - source vimrc  
-<leader> bn - next buffer  
-<leader> bp - previous buffer  
-<leader> bq - close current buffer  
-<leader> . - switch between buffers  
+leader ev - edit vimrc  
+leader sv - source vimrc  
+leader bn - next buffer  
+leader bp - previous buffer  
+leader bq - close current buffer  
+leader . - switch between buffers  
 
-<leader> - zoom out pane  
-<leader> + zoom in pane  
+leader - zoom out pane  
+leader + zoom in pane  
 
 zz - current line in middle of screen  
 zt - up  
 zb - down  
 
 C-w-o - close other splits  
-# Searching
+### Searching
 
 \q - clear highlighted search  
 
-# Work with text
+### Work with text
 
 C-V-I - put text before block (multiple line)  
 C-V-A - put text after block (multiple line)  
 
-# Plugin mappings
+### Plugin mappings
 
-<leader>ue - edit snippet (for utlisnips)  
+leader ue - edit snippet (for utlisnips)  
 <C-n> next in completition  
 
-# RSpec vim
+### RSpec vim
 
-<Leader>t RunCurrentSpecFile  
-<Leader>a RunAllSpecs  
-<Leader>l RunLastSpec  
-<Leader>s RunNearestSpec  
+leader t RunCurrentSpecFile  
+leader a RunAllSpecs  
+leader l RunLastSpec  
+leader s RunNearestSpec  
 
-## T-MUX
+# T-MUX
 
 prefix - C-s  
 
@@ -62,4 +62,18 @@ bind-key C-b - breaking out session
 bind-key K - kill session  
 bind-key l - last window  
 
-## GIT
+### T-Mux runner
+
+leader rr  VtrResizeRunner
+leader ror VtrReorientRunner
+leader sc  VtrSendCommandToRunner
+leader sl  VtrSendLinesToRunner
+leader or  VtrOpenRunner
+leader kr  VtrKillRunner
+leader fr  VtrFocusRunner
+leader dr  VtrDetachRunner
+leader ar  VtrReattachRunner
+leader cr  VtrClearRunner
+leader fc  VtrFlushCommand
+
+# GIT
