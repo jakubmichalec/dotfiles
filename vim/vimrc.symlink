@@ -31,6 +31,7 @@ Plugin 'christoomey/vim-tmux-runner'
 Plugin 'bling/vim-airline'
 Plugin 'scrooloose/nerdtree'
 Plugin 'kana/vim-textobj-user'
+Plugin 'tpope/vim-markdown'
 
 " Ruby and Rails
 Plugin 'tpope/vim-rails'
@@ -185,8 +186,12 @@ vnoremap ; :
 nmap <leader>, :w<CR>                     " save
 
 " markdown settings
-autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+" autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 let g:markdown_fenced_languages = ['html', 'ruby', 'javascript']
+
+highlight ExtraWhitespace term=underline cterm=underline guibg=Grey40
+
+autocmd FileType markdown match ExtraWhitespace /\s\+$/
 
 map <Leader>km :e ~/dotfiles/key.md<cr>
 
