@@ -64,16 +64,16 @@ bind-key l - last window
 
 ### T-Mux runner
 
-leader rr  VtrResizeRunner
-leader ror VtrReorientRunner
-leader sc  VtrSendCommandToRunner
-leader sl  VtrSendLinesToRunner
-leader or  VtrOpenRunner
-leader kr  VtrKillRunner
-leader fr  VtrFocusRunner
-leader dr  VtrDetachRunner
-leader ar  VtrReattachRunner
-leader cr  VtrClearRunner
-leader fc  VtrFlushCommand
+leader rr  VtrResizeRunner  
+leader ror VtrReorientRunner  
+leader sc  VtrSendCommandToRunner  
+leader sl  VtrSendLinesToRunner  
+leader or  VtrOpenRunner  
+leader kr  VtrKillRunner  
+leader fr  VtrFocusRunner  
+leader dr  VtrDetachRunner  
+leader ar  VtrReattachRunner  
+leader cr  VtrClearRunner  
+leader fc  VtrFlushCommand  
 
 # GIT
